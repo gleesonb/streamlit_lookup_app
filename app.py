@@ -12,8 +12,9 @@ def load_data():
 if 'checked_names' not in st.session_state:
     st.session_state.checked_names = set()
 
-# Load data
-df = load_data()
+@st.cache_data
+def load_data():
+    return pd.read_csv('your_names_file.csv')
 
 st.title('Name Lookup App')
 
